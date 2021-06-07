@@ -41,6 +41,12 @@ final class Plugin {
 
 		// Load plugin text domain.
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+
+		// Register block.
+		add_action( 'init', array( $this, 'register_block' ) );
+
+		// Enqueue assets in block editor.
+		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
 	}
 
 	/**
@@ -57,5 +63,41 @@ final class Plugin {
 
 		load_textdomain( 'music-player', WP_LANG_DIR . '/music-player/music-player-' . $locale . '.mo' );
 		load_plugin_textdomain( 'music-player', false, plugin_basename( dirname( MUSIC_PLAYER ) ) . '/languages' );
+	}
+
+	/**
+	 * Register gutenber block.
+	 *
+	 * @return void.
+	 */
+	public function register_block() {
+
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
+		register_block_type(
+			'music-player/music-player',
+			array(
+				'editor_script'   => 'music-player-block',
+				'render_callback' => 'wpf_delete_account_content',
+			)
+		);
+	}
+
+	/**
+	 * Load assets on block editor area.
+	 *
+	 * @return void.
+	 */
+	public function load_assets() {
+
+		wp_enqueue_script(
+			'music-player-block',
+			plugins_url( 'assets/js/admin/block.js', MUSIC_PLAYER ),
+			array( 'wp-blocks', 'wp-editor' ),
+			MUSIC_PLAYER_VERSION,
+			true
+		);
 	}
 }
