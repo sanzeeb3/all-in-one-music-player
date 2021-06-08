@@ -48,6 +48,9 @@ final class Plugin {
 		// Enqueue assets in block editor.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
+
+		// Enqueue assets in the frontend.
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 	}
 
 	/**
@@ -81,7 +84,7 @@ final class Plugin {
 			'music-player/music-player',
 			array(
 				'editor_script'   => 'music-player-block',
-				'render_callback' => 'wpf_delete_account_content',
+				'render_callback' => array( $this, 'music_player_content' ),
 			)
 		);
 	}
@@ -130,11 +133,41 @@ final class Plugin {
 		wp_enqueue_script( 
 			'music-player-script', 
 			plugins_url( 'assets/js/music-player-script.js', MUSIC_PLAYER ),
-			array(),
+			array('jquery'),
 			MUSIC_PLAYER_VERSION,
 			true
 		);
 
 		wp_localize_script( 'music-player-script', 'audio_files', $audio_files_data );
+	}
+
+	/**
+	 * Displays the music player.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string An HTML.
+	 */
+	public function music_player_content() {
+		ob_start();
+		?>
+			<div class="player">
+				<canvas></canvas>
+				<div class="song">
+					<div class="artist"><?php esc_html_e( 'No media files found.', 'music-player' ); ?></div>
+					<div class="name"><?php esc_html_e( 'Please upload your audio files in the media library.', 'music-player' ); ?></div>
+				</div>
+				<div class="playarea">
+					<div class="prevSong"></div>
+					<div class="play"></div>
+					<div class="pause"></div>
+					<div class="nextSong"></div>
+				</div>
+				<div class="soundControl"></div>
+				<div class="time">00:00</div>
+			</div>
+		<?php
+
+		return ob_get_clean();
 	}
 }
