@@ -47,6 +47,7 @@ final class Plugin {
 
 		// Enqueue assets in block editor.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
 	}
 
 	/**
@@ -94,10 +95,46 @@ final class Plugin {
 
 		wp_enqueue_script(
 			'music-player-block',
-			plugins_url( 'assets/js/admin/block.js', MUSIC_PLAYER ),
+			plugins_url( 'assets/js/admin/block.min.js', MUSIC_PLAYER ),
 			array( 'wp-blocks', 'wp-editor' ),
 			MUSIC_PLAYER_VERSION,
 			true
 		);
+
+		// Query posts table with audio files.
+		$args = array(
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'audio',
+			'numberposts'    => -1,
+		);
+
+		$audio_files      = get_posts( $args );
+		$audio_files_data = array();
+
+		foreach ( $audio_files as $key => $file ) {
+
+			$url                                = wp_get_attachment_url( $file->ID );
+			$audio_files_data[ $key ]['artist'] = $file->post_content;
+			$audio_files_data[ $key ]['song']   = $file->post_title;
+			$audio_files_data[ $key ]['url']    = $url;
+		}
+
+		wp_enqueue_style( 
+			'music-player-style', 
+			plugins_url( 'assets/css/music-player-style.css', MUSIC_PLAYER ),
+			array(),
+			MUSIC_PLAYER_VERSION,
+			false
+		);
+
+		wp_enqueue_script( 
+			'music-player-script', 
+			plugins_url( 'assets/js/music-player-script.js', MUSIC_PLAYER ),
+			array(),
+			MUSIC_PLAYER_VERSION,
+			true
+		);
+
+		wp_localize_script( 'music-player-script', 'audio_files', $audio_files_data );
 	}
 }
