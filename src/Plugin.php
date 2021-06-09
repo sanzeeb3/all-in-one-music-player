@@ -130,22 +130,22 @@ final class Plugin {
 		}
 
 		wp_enqueue_style( 
-			'music-player-style', 
-			plugins_url( 'assets/css/music-player-style.css', MUSIC_PLAYER ),
+			'circular-spikes-style', 
+			plugins_url( 'assets/css/circular-spikes.css', MUSIC_PLAYER ),
 			array(),
 			MUSIC_PLAYER_VERSION,
 			false
 		);
 
 		wp_enqueue_script( 
-			'music-player-script', 
-			plugins_url( 'assets/js/music-player-script.js', MUSIC_PLAYER ),
+			'circular-spikes-script', 
+			plugins_url( 'assets/js/circular-spikes.js', MUSIC_PLAYER ),
 			array('jquery'),
 			MUSIC_PLAYER_VERSION,
 			true
 		);
 
-		wp_localize_script( 'music-player-script', 'audio_files', $audio_files_data );
+		wp_localize_script( 'circular-spikes', 'audio_files', $audio_files_data );
 	}
 
 	/**
@@ -159,7 +159,7 @@ final class Plugin {
 
 		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'Default';
 
-		if ( 'circular-pink' === $theme ) {
+		if ( 'circular-spikes' === $theme ) {
 			ob_start();
 			?>
 				<div class="player">

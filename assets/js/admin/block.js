@@ -43,11 +43,11 @@ registerBlockType( 'music-player/music-player', {
             <InspectorControls key="music-player-theme-selector-inspector-controls">
                 <PanelBody title="Music Player Settings">
                     <SelectControl
-                        label= "Select Theme"
+                        label= __( 'Select Theme', 'music-player' ),
                         value= { theme }
                         options={[
                                 { value: 'default', label: 'Default' },
-                                { value: 'circular-pink', label: 'Circular Pink' }
+                                { value: 'circular-spikes', label: 'Circular Spikes' }
                             ]}    
                         onChange={ selectTheme }
                     />
