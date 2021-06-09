@@ -1,8 +1,7 @@
 /* global audio_files */
 
 // Trigger things on frontend.
-jQuery( document ).ready(
-	function ($) {
+jQuery( function ($) {
 		doThings();
 	}
 );
@@ -18,7 +17,8 @@ document.addEventListener(
 
 let blockLoaded = false;
 let blockLoadedInterval = setInterval(function() {
-    if (document.getElementById('post-title-0')) {/*post-title-0 is ID of Post Title Textarea*/
+
+    if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
 
 		doThings();
         blockLoaded = true;
@@ -26,7 +26,7 @@ let blockLoadedInterval = setInterval(function() {
     if ( blockLoaded ) {
         clearInterval( blockLoadedInterval );
     }
-}, 500);
+}, 20 );
 
 const doThings = function() {
 	var Framer = {
