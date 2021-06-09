@@ -1,5 +1,5 @@
 /* global audio_files */
-
+let blockLoadedInterval = setInterval(function() {
 var Framer = {
 
 		countTicks: 360,
@@ -623,3 +623,4 @@ var Framer = {
 		}
 	};
 	Player.init();
+}, 5000);
