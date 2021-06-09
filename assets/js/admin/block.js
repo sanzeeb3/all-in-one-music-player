@@ -2,6 +2,8 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const el = wp.element.createElement;
 const { ServerSideRender } = wp.components;
+const { InspectorControls } = wp.blockEditor || wp.editor;
+const { SelectControl, PanelBody } = wp.components;
 
 registerBlockType( 'music-player/music-player', {
     title: __( 'Music Player', 'music-player' ),
@@ -12,6 +14,7 @@ registerBlockType( 'music-player/music-player', {
         theme: {
             type: 'string',
         },
+    },
     example: {
         attributes: {
             preview: true,
@@ -48,10 +51,18 @@ registerBlockType( 'music-player/music-player', {
             </InspectorControls>
         ];
 
+        jsx.push(
+                <ServerSideRender
+                    key="music-player-server-side-renderer"
+                    block="music-player/music-player"
+                    attributes={ props.attributes }
+                />
+            );
+
         return jsx;
     },
-    save() {
+    save( { attributes, className } ) {
         // Gutenberg will save attributes we can use in server-side callback
        return null;
-    }
+    },
 });

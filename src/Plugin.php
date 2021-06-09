@@ -80,9 +80,16 @@ final class Plugin {
 			return;
 		}
 
+		$attributes = [
+			'theme'  => [
+				'type' => 'string',
+			],
+		];
+
 		register_block_type(
 			'music-player/music-player',
 			array(
+				'attributes' 	  => $attributes,
 				'editor_script'   => 'music-player-block',
 				'render_callback' => array( $this, 'music_player_content' ),
 			)
@@ -148,26 +155,10 @@ final class Plugin {
 	 *
 	 * @return string An HTML.
 	 */
-	public function music_player_content() {
-		ob_start();
-		?>
-			<div class="player">
-				<canvas></canvas>
-				<div class="song">
-					<div class="artist"><?php esc_html_e( 'No media files found.', 'music-player' ); ?></div>
-					<div class="name"><?php esc_html_e( 'Please upload your audio files in the media library.', 'music-player' ); ?></div>
-				</div>
-				<div class="playarea">
-					<div class="prevSong"></div>
-					<div class="play"></div>
-					<div class="pause"></div>
-					<div class="nextSong"></div>
-				</div>
-				<div class="soundControl"></div>
-				<div class="time">00:00</div>
-			</div>
-		<?php
+	public function music_player_content( $attr ) {
 
-		return ob_get_clean();
+		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'Default';
+
+		return $theme;
 	}
 }
