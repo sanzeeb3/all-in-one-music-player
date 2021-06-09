@@ -41,9 +41,9 @@ registerBlockType( 'music-player/music-player', {
 
         jsx = [
             <InspectorControls key="music-player-theme-selector-inspector-controls">
-                <PanelBody title="Music Player Settings">
+                <PanelBody title= { __( 'Music Player Settings', 'music-player' ) }>
                     <SelectControl
-                        label= __( 'Select Theme', 'music-player' ),
+                        label= { __( 'Select Theme', 'music-player' ) }
                         value= { theme }
                         options={[
                                 { value: 'default', label: 'Default' },

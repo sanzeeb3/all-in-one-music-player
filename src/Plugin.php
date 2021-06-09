@@ -145,7 +145,7 @@ final class Plugin {
 			true
 		);
 
-		wp_localize_script( 'circular-spikes', 'audio_files', $audio_files_data );
+		wp_localize_script( 'circular-spikes-script', 'audio_files', $audio_files_data );
 	}
 
 	/**
@@ -157,30 +157,11 @@ final class Plugin {
 	 */
 	public function music_player_content( $attr ) {
 
-		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'Default';
+		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'default';
 
 		if ( 'circular-spikes' === $theme ) {
 			ob_start();
-			?>
-				<div class="player">
-					<canvas></canvas>
-					<div class="song">
-						<div class="artist"><?php esc_html_e( 'Searching media files...', 'anuprastha' ); ?></div>
-					<div class="name"><?php esc_html_e( 'Please upload your audio files in the media library.', 'anuprastha' ); ?></div>
-				</div>
-
-				<div class="playarea">
-					<div class="prevSong"></div>
-					<div class="play"></div>
-					<div class="pause"></div>
-					<div class="nextSong"></div>
-				</div>
-		
-				<div class="soundControl"></div>
-					<div class="time">00:00</div>
-				</div>
-			<?php
-
+				include MUSIC_PLAYER_PLUGIN_DIR . 'templates/circular-spikes.php';
 			return ob_get_clean();
 		}
 

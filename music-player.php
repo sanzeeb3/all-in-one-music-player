@@ -20,6 +20,11 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'MUSIC_PLAYER', __FILE__ );
 
+// Plugin Folder Path.
+if ( ! defined( 'MUSIC_PLAYER_PLUGIN_DIR' ) ) {
+    define( 'MUSIC_PLAYER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+}
+
 /**
  * Plugin version.
  *
