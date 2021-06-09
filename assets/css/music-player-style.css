@@ -4,14 +4,8 @@ canvas {
 }
 
 .player {
-    width: 740px;
-    height: 740px;
-    margin-left: -370px;
-    margin-top: -370px;
     display: block;
     position: absolute;
-    top: 100%;
-    left:  25%;
 }
 
 .player .playarea {

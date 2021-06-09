@@ -1,5 +1,34 @@
 /* global audio_files */
+
+// Trigger things on frontend.
+jQuery( document ).ready(
+	function ($) {
+		doThings();
+	}
+);
+
+// Trigger things on block rendering.
+document.addEventListener(
+	'musicPlayerInitialize',
+	function( e ) {
+		window.setTimeout( doThings, 20 );
+	},
+	false
+);
+
+let blockLoaded = false;
 let blockLoadedInterval = setInterval(function() {
+    if (document.getElementById('post-title-0')) {/*post-title-0 is ID of Post Title Textarea*/
+
+		doThings();
+        blockLoaded = true;
+    }
+    if ( blockLoaded ) {
+        clearInterval( blockLoadedInterval );
+    }
+}, 500);
+
+const doThings = function() {
 var Framer = {
 
 		countTicks: 360,
@@ -623,4 +652,4 @@ var Framer = {
 		}
 	};
 	Player.init();
-}, 5000);
+}

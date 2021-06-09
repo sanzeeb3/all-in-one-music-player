@@ -7,7 +7,7 @@ const { SelectControl, PanelBody } = wp.components;
 
 registerBlockType( 'music-player/music-player', {
     title: __( 'Music Player', 'music-player' ),
-    description: __( 'The music player by default plays all the music found in your media library. Please upload media files to your media library', 'music-player' ),
+    description: __( 'For best results, plesae view and play the music player in the frontend of your site.', 'music-player' ),
     icon: 'format-audio',
     category: 'widgets',
     keywords: [ 'player', 'music', 'mp3', 'audio' ],
@@ -35,6 +35,9 @@ registerBlockType( 'music-player/music-player', {
         function selectTheme( value ) {
             setAttributes( { theme: value } );
         }
+
+        const event = new Event('musicPlayerInitialize');
+        document.dispatchEvent( event );
 
         jsx = [
             <InspectorControls key="music-player-theme-selector-inspector-controls">
