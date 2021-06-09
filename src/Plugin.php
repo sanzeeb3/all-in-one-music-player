@@ -137,9 +137,36 @@ final class Plugin {
 			false
 		);
 
+		wp_enqueue_style( 
+			'a-player-style', 
+			plugins_url( 'assets/css/APlayer.min.css', MUSIC_PLAYER ),
+			array(),
+			MUSIC_PLAYER_VERSION,
+			false
+		);
+
 		wp_enqueue_script( 
 			'circular-spikes-script', 
 			plugins_url( 'assets/js/circular-spikes.js', MUSIC_PLAYER ),
+			array('jquery'),
+			MUSIC_PLAYER_VERSION,
+			true
+		);
+
+		/**
+		 * @see https://github.com/DIYgod/APlayer
+		 */
+		wp_enqueue_script( 
+			'a-player-script', 
+			plugins_url( 'assets/js/APlayer.min.js', MUSIC_PLAYER ),
+			array('jquery'),
+			MUSIC_PLAYER_VERSION,
+			true
+		);
+
+		wp_enqueue_script( 
+			'music-player-script', 
+			plugins_url( 'assets/js/script.js', MUSIC_PLAYER ),
 			array('jquery'),
 			MUSIC_PLAYER_VERSION,
 			true
@@ -157,13 +184,13 @@ final class Plugin {
 	 */
 	public function music_player_content( $attr ) {
 
-		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'default';
+		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'aplayer';
 
-		if ( 'circular-spikes' === $theme ) {
-			ob_start();
-				include MUSIC_PLAYER_PLUGIN_DIR . 'templates/circular-spikes.php';
-			return ob_get_clean();
-		}
+		ob_start();
+		
+		include MUSIC_PLAYER_PLUGIN_DIR . 'templates/' . $theme . '.php';
+		
+		return ob_get_clean();
 
 		return $theme;
 	}

@@ -24,7 +24,7 @@ registerBlockType( 'music-player/music-player', {
     edit( props ) {
         const {
                 attributes: {
-                    theme = "default",
+                    theme = "aplayer",
                 },
 
             setAttributes
@@ -46,7 +46,7 @@ registerBlockType( 'music-player/music-player', {
                         label= { __( 'Select Theme', 'music-player' ) }
                         value= { theme }
                         options={[
-                                { value: 'default', label: 'Default' },
+                                { value: 'aplayer', label: 'APlayer' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' }
                             ]}    
                         onChange={ selectTheme }
