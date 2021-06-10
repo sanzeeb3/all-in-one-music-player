@@ -104,8 +104,8 @@ final class Plugin {
 	public function load_assets() {
 
 		wp_enqueue_script(
-			'all-in-one-music-player-block',
-			plugins_url( 'assets/js/admin/block.min.js', AIO_MUSIC_PLAYER ),
+			'all-in-one-music-player-block-script',
+			plugins_url( 'assets/js/block/block.min.js', AIO_MUSIC_PLAYER ),
 			array( 'wp-blocks', 'wp-editor' ),
 			AIO_MUSIC_PLAYER_VERSION,
 			true
@@ -167,8 +167,8 @@ final class Plugin {
 
 		// Global script for all music player.
 		wp_enqueue_script( 
-			'all-in-one-music-player-script', 
-			plugins_url( 'assets/js/script.js', AIO_MUSIC_PLAYER ),
+			'all-in-one-music-player-main-script', 
+			plugins_url( 'assets/js/main.js', AIO_MUSIC_PLAYER ),
 			array('jquery'),
 			AIO_MUSIC_PLAYER_VERSION,
 			true
