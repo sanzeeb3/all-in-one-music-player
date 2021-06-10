@@ -1,8 +1,8 @@
 module.exports = {
-	entry: './assets/js/admin/block.js',
+	entry: './assets/js/block/block.js',
 	output: {
 		path: __dirname,
-		filename: 'assets/js/admin/block.min.js',
+		filename: 'assets/js/block/block.min.js',
 	},
 	module: {
 		loaders: [
