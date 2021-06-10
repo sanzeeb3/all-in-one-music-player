@@ -5,9 +5,9 @@ const { ServerSideRender } = wp.components;
 const { InspectorControls } = wp.blockEditor || wp.editor;
 const { SelectControl, PanelBody } = wp.components;
 
-registerBlockType( 'music-player/music-player', {
-    title: __( 'Music Player', 'music-player' ),
-    description: __( 'For best results, plesae view and play the music player in the frontend of your site.', 'music-player' ),
+registerBlockType( 'all-in-one-music-player/music-player-selector', {
+    title: __( 'All in One Music Player', 'all-in-one-music-player' ),
+    description: __( 'For best results, plesae view and play the music player in the frontend of your site.', 'all-in-one-music-player' ),
     icon: 'format-audio',
     category: 'widgets',
     keywords: [ 'player', 'music', 'mp3', 'audio' ],
@@ -40,10 +40,10 @@ registerBlockType( 'music-player/music-player', {
         document.dispatchEvent( event );
 
         jsx = [
-            <InspectorControls key="music-player-theme-selector-inspector-controls">
-                <PanelBody title= { __( 'Music Player Settings', 'music-player' ) }>
+            <InspectorControls key="all-in-one-music-player-theme-selector-inspector-controls">
+                <PanelBody title= { __( 'All in One Music Player Settings', 'all-in-one-music-player' ) }>
                     <SelectControl
-                        label= { __( 'Select Theme', 'music-player' ) }
+                        label= { __( 'Select Theme', 'all-in-one-music-player' ) }
                         value= { theme }
                         options={[
                                 { value: 'aplayer', label: 'APlayer' },
@@ -57,8 +57,8 @@ registerBlockType( 'music-player/music-player', {
 
         jsx.push(
                 <ServerSideRender
-                    key="music-player-server-side-renderer"
-                    block="music-player/music-player"
+                    key="all-in-onemusic-player-server-side-renderer"
+                    block="all-in-one-music-player/music-player-selector"
                     attributes={ props.attributes }
                 />
             );
