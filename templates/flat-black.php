@@ -2,7 +2,7 @@
       <div id="list-screen" class="slide-in-top">
         <div id="list-screen-header" class="hide-playlist">
           <img id="up-arrow" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/up.svg"/>
-          Hide Playlist
+          <?php esc_html_e( 'Hide Playlist', 'all-in-one-music-player' ); ?>
         </div>
 
         <div id="list">
@@ -191,7 +191,7 @@
       <div id="player-screen">
         <div class="player-header down-header">
           <img id="down" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/down.svg"/>
-          Show Playlist
+          <?php esc_html_e( 'Show Playlist', 'all-in-one-music-player' ); ?>
         </div>
         <div id="player-top">
           <img data-amplitude-song-info="cover_art_url"/>
@@ -239,7 +239,7 @@
           </div>
 
           <div id="volume-container">
-            <img src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/volume.svg"/><input type="range" class="amplitude-volume-slider" step=".1"/>
+          	<!--   <img src="https://example.com/images/volume-control.jpg"/><input type="range" class="amplitude-volume-slider" step=".1"/> -->
           </div>
         </div>
       </div>

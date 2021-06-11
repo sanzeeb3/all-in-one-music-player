@@ -128,6 +128,12 @@ final class Plugin {
 			$audio_files_data[ $key ]['song']   = $file->post_title;
 			$audio_files_data[ $key ]['name']   = $file->post_title;
 			$audio_files_data[ $key ]['url']    = $url;
+
+			// Cover for all Amplitude.js.
+			$audio_files_data[ $key ]['cover_art_url']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
+
+			// Cover for aPlayer
+			$audio_files_data[ $key ]['cover']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
 		}
 
 		wp_enqueue_style(
@@ -203,6 +209,7 @@ final class Plugin {
 
 		wp_localize_script( 'circular-spikes-script', 'audio_files', $audio_files_data );
 		wp_localize_script( 'all-in-one-music-player-script', 'audio_files', $audio_files_data );
+		wp_localize_script( 'flat-black-player-script', 'audio_files', $audio_files_data );
 	}
 
 	/**
