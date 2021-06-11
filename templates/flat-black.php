@@ -6,171 +6,30 @@
         </div>
 
         <div id="list">
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="0">
-            <span class="song-number-now-playing">
-              <span class="number">1</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
 
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="0"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="0"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="0"></span></span>
-            </div>
+		    <?php
 
-            <span class="song-duration">
-              3:30
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="1">
-            <span class="song-number-now-playing">
-              <span class="number">2</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
+		    	for ( $i = 0; $i < 11; $i++ ) {
+		    		?>
+		    			<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo $i;?>">
+				            <span class="song-number-now-playing">
+				              <span class="number"><?php echo $i + 1; ?></span>
+				              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
+				            </span>
 
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="1"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="1"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="1"></span></span>
-            </div>
+				            <div class="song-meta-container">
+				              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo $i;?>"></span>
+				              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo $i;?>"></span> <span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo $i;?>"></span></span>
+				            </div>
 
-            <span class="song-duration">
-              3:16
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="2">
-            <span class="song-number-now-playing">
-              <span class="number">3</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
+				            <span class="song-duration">
+				              3:30
+				            <span>
+		      			</div>
+		    		<?php
+		    	}
+		    ?>
 
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="2"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="2"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="2"></span></span>
-            </div>
-
-            <span class="song-duration">
-              3:32
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="3">
-            <span class="song-number-now-playing">
-              <span class="number">4</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="3"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="3"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="3"></span></span>
-            </div>
-
-            <span class="song-duration">
-              3:30
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="4">
-            <span class="song-number-now-playing">
-              <span class="number">5</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="4"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="4"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="4"></span></span>
-            </div>
-
-            <span class="song-duration">
-              5:12
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="5">
-            <span class="song-number-now-playing">
-              <span class="number">6</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="5"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="5"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="5"></span></span>
-            </div>
-
-            <span class="song-duration">
-              5:29
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="6">
-            <span class="song-number-now-playing">
-              <span class="number">7</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="6"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="6"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="6"></span></span>
-            </div>
-
-            <span class="song-duration">
-              5:29
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="7">
-            <span class="song-number-now-playing">
-              <span class="number">8</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="7"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="7"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="7"></span></span>
-            </div>
-
-            <span class="song-duration">
-              2:39
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="8">
-            <span class="song-number-now-playing">
-              <span class="number">9</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="8"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="8"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="8"></span></span>
-            </div>
-
-            <span class="song-duration">
-              1:00
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="9">
-            <span class="song-number-now-playing">
-              <span class="number">10</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="9"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="9"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="9"></span></span>
-            </div>
-
-            <span class="song-duration">
-              5:25
-            <span>
-          </div>
-          <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="10">
-            <span class="song-number-now-playing">
-              <span class="number">11</span>
-              <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
-            </span>
-
-            <div class="song-meta-container">
-              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="10"></span>
-              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="10"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="10"></span></span>
-            </div>
-
-            <span class="song-duration">
-              5:40
-            <span>
-          </div>
         </div>
 
         <div id="list-screen-footer">
