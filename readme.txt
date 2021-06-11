@@ -24,7 +24,9 @@ Comes with different music player skin/themes you can choose from.
 
 1) APlayer (https://github.com/DIYgod/APlayer).
 2) Circular Spikes (from Codepen).
-3) Material Style (by https://github.com/MichaelMammoliti).
+3) AmplitudeJS (https://github.com/serversideup/amplitudejs/).
+3) Flat Black (from Codepen).
+
 
 == Screenshots ==
 

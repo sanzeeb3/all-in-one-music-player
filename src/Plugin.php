@@ -197,7 +197,7 @@ final class Plugin {
 			'all-in-one-music-player-main-script', 
 			plugins_url( 'assets/js/main.js', AIO_MUSIC_PLAYER ),
 			array('jquery'),
-			'AIO_MUSIC_PLAYER_VERSION',
+			AIO_MUSIC_PLAYER_VERSION,
 			true
 		);
 
