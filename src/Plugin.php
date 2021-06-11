@@ -146,6 +146,14 @@ final class Plugin {
 			false
 		);
 
+		wp_enqueue_style( 
+			'flat-black-player-style', 
+			plugins_url( 'assets/css/flat-black.css', AIO_MUSIC_PLAYER ),
+			array(),
+			AIO_MUSIC_PLAYER_VERSION,
+			false
+		);
+
 		wp_enqueue_script( 
 			'circular-spikes-script', 
 			plugins_url( 'assets/js/circular-spikes.js', AIO_MUSIC_PLAYER ),
@@ -165,12 +173,31 @@ final class Plugin {
 			true
 		);
 
+		/**
+		 * @see https://github.com/serversideup/amplitudejs/
+		 */
+		wp_enqueue_script( 
+			'amplitude-player-script', 
+			plugins_url( 'assets/js/amplitude.js', AIO_MUSIC_PLAYER ),
+			array('jquery'),
+			'5.3.1',
+			true
+		);
+
+		wp_enqueue_script( 
+			'flat-black-player-script', 
+			plugins_url( 'assets/js/flat-black.js', AIO_MUSIC_PLAYER ),
+			array('jquery'),
+			AIO_MUSIC_PLAYER_VERSION,
+			true
+		);
+
 		// Global script for all music player.
 		wp_enqueue_script( 
 			'all-in-one-music-player-main-script', 
 			plugins_url( 'assets/js/main.js', AIO_MUSIC_PLAYER ),
 			array('jquery'),
-			AIO_MUSIC_PLAYER_VERSION,
+			'AIO_MUSIC_PLAYER_VERSION',
 			true
 		);
 
