@@ -111,31 +111,6 @@ final class Plugin {
 			true
 		);
 
-		// Query posts table with audio files.
-		$args = array(
-			'post_type'      => 'attachment',
-			'post_mime_type' => 'audio',
-			'numberposts'    => -1,
-		);
-
-		$audio_files      = get_posts( $args );
-		$audio_files_data = array();
-
-		foreach ( $audio_files as $key => $file ) {
-
-			$url                                = wp_get_attachment_url( $file->ID );
-			$audio_files_data[ $key ]['artist'] = $file->post_content;
-			$audio_files_data[ $key ]['song']   = $file->post_title;
-			$audio_files_data[ $key ]['name']   = $file->post_title;
-			$audio_files_data[ $key ]['url']    = $url;
-
-			// Cover for all Amplitude.js.
-			$audio_files_data[ $key ]['cover_art_url']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
-
-			// Cover for aPlayer
-			$audio_files_data[ $key ]['cover']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
-		}
-
 		wp_enqueue_style(
 			'circular-spikes-style',
 			plugins_url( 'assets/css/circular-spikes.css', AIO_MUSIC_PLAYER ),
@@ -155,6 +130,15 @@ final class Plugin {
 		wp_enqueue_style(
 			'flat-black-player-style',
 			plugins_url( 'assets/css/flat-black.css', AIO_MUSIC_PLAYER ),
+			array(),
+			AIO_MUSIC_PLAYER_VERSION,
+			false
+		);
+
+
+		wp_enqueue_style(
+			'blue-playlist-player-style',
+			plugins_url( 'assets/css/blue-playlist.css', AIO_MUSIC_PLAYER ),
 			array(),
 			AIO_MUSIC_PLAYER_VERSION,
 			false
@@ -193,7 +177,15 @@ final class Plugin {
 		wp_enqueue_script(
 			'flat-black-player-script',
 			plugins_url( 'assets/js/flat-black.js', AIO_MUSIC_PLAYER ),
-			array( 'jquery' ),
+			array( 'jquery', 'amplitude-player-script' ),
+			AIO_MUSIC_PLAYER_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
+			'blue-playlist-player-script',
+			plugins_url( 'assets/js/blue-playlist.js', AIO_MUSIC_PLAYER ),
+			array( 'jquery', 'amplitude-player-script' ),
 			AIO_MUSIC_PLAYER_VERSION,
 			true
 		);
@@ -207,9 +199,47 @@ final class Plugin {
 			true
 		);
 
-		wp_localize_script( 'circular-spikes-script', 'audio_files', $audio_files_data );
-		wp_localize_script( 'all-in-one-music-player-script', 'audio_files', $audio_files_data );
-		wp_localize_script( 'flat-black-player-script', 'audio_files', $audio_files_data );
+		wp_localize_script( 'circular-spikes-script', 'audio_files', $this->get_audio_files() );
+		wp_localize_script( 'all-in-one-music-player-script', 'audio_files', $this->get_audio_files() );
+		wp_localize_script( 'flat-black-player-script', 'audio_files', $this->get_audio_files() );
+		wp_localize_script( 'blue-playlist-player-script', 'audio_files', $this->get_audio_files() );
+	}
+
+	/**
+	 * Get all audio files in the Media Library and prepare them.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
+	public function get_audio_files() {
+
+		// Query posts table with audio files.
+		$args = array(
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'audio',
+			'numberposts'    => -1,
+		);
+
+		$audio_files      = get_posts( $args );
+		$audio_files_data = array();
+
+		foreach ( $audio_files as $key => $file ) {
+
+			$url                                = wp_get_attachment_url( $file->ID );
+			$audio_files_data[ $key ]['artist'] = $file->post_content;
+			$audio_files_data[ $key ]['song']   = $file->post_title;
+			$audio_files_data[ $key ]['name']   = $file->post_title;
+			$audio_files_data[ $key ]['url']    = $url;
+
+			// Cover for all Amplitude.js.
+			$audio_files_data[ $key ]['cover_art_url']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
+
+			// Cover for aPlayer
+			$audio_files_data[ $key ]['cover']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
+		}
+
+		return $audio_files_data;
 	}
 
 	/**
@@ -220,6 +250,8 @@ final class Plugin {
 	 * @return string An HTML.
 	 */
 	public function music_player_content( $attr ) {
+
+		$songs = $this->get_audio_files();
 
 		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'aplayer';
 

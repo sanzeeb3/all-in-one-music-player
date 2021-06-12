@@ -48,7 +48,8 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
                         options={[
                                 { value: 'aplayer', label: 'APlayer' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' },
-                                { value: 'flat-black', label: 'Flat Black' }
+                                { value: 'flat-black', label: 'Flat Black' },
+                                { value: 'blue-playlist', label: 'Blue Playlist' }
                             ]}    
                         onChange={ selectTheme }
                     />
