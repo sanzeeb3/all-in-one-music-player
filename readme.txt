@@ -31,7 +31,8 @@ Comes with different music player skin/themes you can choose from.
 == Screenshots ==
 
 2. Circular Spikes.
-3. APlayer
+3. APlayer.
+4. Flat Black.
 
 == Frequently Asked Questions ==
 
