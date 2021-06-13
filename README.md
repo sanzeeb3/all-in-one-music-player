@@ -60,32 +60,32 @@ Steps:
 
 5) Enqueue the addded CSS and JS.
 
-In src/Plugin.php around line 124 see how files are enqueued. let us enqueue visualization.js
+In th src/Plugin.php, approax. line number 127, where there is:
 
-```
-// Enqueue JS.
-wp_enqueue_script(
-  'visualization-script',
-  plugins_url( 'assets/js/visualization.js', AIO_MUSIC_PLAYER ),
-  array( 'jquery' ),
-  AIO_MUSIC_PLAYER_VERSION,
-  true
-);
+    $assets = array(
+      'circular-spikes',
+      'a-player',
+      'flat-black-player',
+      'blue-playlist',
+      'main'
+    );
 
-// Enqueue CSS.
-wp_enqueue_style(
-  'visualization-style',
-  plugins_url( 'assets/css/visualization.css', AIO_MUSIC_PLAYER ),
-  array(),
-  AIO_MUSIC_PLAYER_VERSION,
-  false
-);
+add a new element 'visualization'. So, it would be:
 
-// Localize to pass variables to JS.
-wp_localize_script( 'visualization-script', 'audio_files', $this->get_audio_files() );
-```
+    $assets = array(
+      'circular-spikes',
+      'a-player',
+      'flat-black-player',
+      'blue-playlist',
+      'main',
+      'visualization'
+    );
+
+
+Behind the scenes, it enqueues the `visualization.css` and `visualization.js`
 
 That's it. There should be a new Option in block editor to change the music player.
+
 
 But, the songs in these files are dummy and should be changes.
 

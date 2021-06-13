@@ -1,7 +1,7 @@
 <div id="flat-black-player-container">
-      <div id="list-screen" class="slide-in-top">
+    <div id="list-screen" class="slide-in-top">
         <div id="list-screen-header" class="hide-playlist">
-          <img id="up-arrow" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/up.svg"/>
+    	    <img id="up-arrow" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/up.svg"/>
           <?php esc_html_e( 'Hide Playlist', 'all-in-one-music-player' ); ?>
         </div>
 

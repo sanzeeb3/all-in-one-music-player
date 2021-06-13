@@ -111,59 +111,9 @@ final class Plugin {
 			true
 		);
 
-		wp_enqueue_style(
-			'circular-spikes-style',
-			plugins_url( 'assets/css/circular-spikes.css', AIO_MUSIC_PLAYER ),
-			array(),
-			AIO_MUSIC_PLAYER_VERSION,
-			false
-		);
-
-		wp_enqueue_style(
-			'a-player-style',
-			plugins_url( 'assets/css/APlayer.min.css', AIO_MUSIC_PLAYER ),
-			array(),
-			AIO_MUSIC_PLAYER_VERSION,
-			false
-		);
-
-		wp_enqueue_style(
-			'flat-black-player-style',
-			plugins_url( 'assets/css/flat-black.css', AIO_MUSIC_PLAYER ),
-			array(),
-			AIO_MUSIC_PLAYER_VERSION,
-			false
-		);
-
-
-		wp_enqueue_style(
-			'blue-playlist-player-style',
-			plugins_url( 'assets/css/blue-playlist.css', AIO_MUSIC_PLAYER ),
-			array(),
-			AIO_MUSIC_PLAYER_VERSION,
-			false
-		);
-
-		wp_enqueue_script(
-			'circular-spikes-script',
-			plugins_url( 'assets/js/circular-spikes.js', AIO_MUSIC_PLAYER ),
-			array( 'jquery' ),
-			AIO_MUSIC_PLAYER_VERSION,
-			true
-		);
-
 		/**
-		 * @see https://github.com/DIYgod/APlayer
-		 */
-		wp_enqueue_script(
-			'a-player-script',
-			plugins_url( 'assets/js/APlayer.min.js', AIO_MUSIC_PLAYER ),
-			array( 'jquery' ),
-			AIO_MUSIC_PLAYER_VERSION,
-			true
-		);
-
-		/**
+		 * Amplitude.js loades separately because of version and needs update and regular monitor.
+		 *
 		 * @see https://github.com/serversideup/amplitudejs/
 		 */
 		wp_enqueue_script(
@@ -174,35 +124,34 @@ final class Plugin {
 			true
 		);
 
-		wp_enqueue_script(
-			'flat-black-player-script',
-			plugins_url( 'assets/js/flat-black.js', AIO_MUSIC_PLAYER ),
-			array( 'jquery', 'amplitude-player-script' ),
-			AIO_MUSIC_PLAYER_VERSION,
-			true
+		$assets = array(
+			'circular-spikes',
+			'a-player',
+			'flat-black',
+			'blue-playlist',
+			'main'
 		);
 
-		wp_enqueue_script(
-			'blue-playlist-player-script',
-			plugins_url( 'assets/js/blue-playlist.js', AIO_MUSIC_PLAYER ),
-			array( 'jquery', 'amplitude-player-script' ),
-			AIO_MUSIC_PLAYER_VERSION,
-			true
-		);
+		foreach( $assets as $asset ) {
 
-		// Global script for all music player.
-		wp_enqueue_script(
-			'all-in-one-music-player-main-script',
-			plugins_url( 'assets/js/main.js', AIO_MUSIC_PLAYER ),
-			array( 'jquery' ),
-			AIO_MUSIC_PLAYER_VERSION,
-			true
-		);
+			wp_enqueue_style(
+				$asset . '-style',
+				plugins_url( 'assets/css/'. $asset .'.css', AIO_MUSIC_PLAYER ),
+				array(),
+				AIO_MUSIC_PLAYER_VERSION,
+				false
+			);
 
-		wp_localize_script( 'circular-spikes-script', 'audio_files', $this->get_audio_files() );
-		wp_localize_script( 'all-in-one-music-player-script', 'audio_files', $this->get_audio_files() );
-		wp_localize_script( 'flat-black-player-script', 'audio_files', $this->get_audio_files() );
-		wp_localize_script( 'blue-playlist-player-script', 'audio_files', $this->get_audio_files() );
+			wp_enqueue_script(
+				$asset. '-script',
+				plugins_url( 'assets/js/'. $asset .'.js', AIO_MUSIC_PLAYER ),
+				array( 'jquery' ),
+				AIO_MUSIC_PLAYER_VERSION,
+				true
+			);
+
+			wp_localize_script( $asset . '-script', 'audio_files', $this->get_audio_files() );
+		};
 	}
 
 	/**
