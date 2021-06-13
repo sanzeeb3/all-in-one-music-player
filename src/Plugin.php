@@ -47,7 +47,6 @@ final class Plugin {
 
 		// Enqueue assets in block editor.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
 
 		// Enqueue assets in the frontend.
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
@@ -103,13 +102,16 @@ final class Plugin {
 	 */
 	public function load_assets() {
 
-		wp_enqueue_script(
-			'all-in-one-music-player-block-script',
-			plugins_url( 'assets/js/block/block.min.js', AIO_MUSIC_PLAYER ),
-			array( 'wp-blocks', 'wp-editor' ),
-			AIO_MUSIC_PLAYER_VERSION,
-			true
-		);
+		if ( is_admin() ) {	// block.min.js isn't required on the frontend. The check is only required for 'wp_enqueue_scripts'. 'enqueue_block_editor_assets' automatically loads only on block editor.
+
+			wp_enqueue_script(
+				'all-in-one-music-player-block-script',
+				plugins_url( 'assets/js/block/block.min.js', AIO_MUSIC_PLAYER ),
+				array( 'wp-blocks', 'wp-editor' ),
+				AIO_MUSIC_PLAYER_VERSION,
+				true
+			);
+		}
 
 		/**
 		 * Amplitude.js loades separately because of version and needs update and regular monitor.
@@ -131,6 +133,24 @@ final class Plugin {
 			'blue-playlist',
 			'main'
 		);
+
+		// Load assets conditionally on frontend.
+		if ( ! is_admin() ) {
+
+			global $post;
+
+		    $blocks = parse_blocks( $post->post_content );
+
+			$assets = array();
+
+			foreach( $blocks as $block ) {
+				if ( 'all-in-one-music-player/music-player-selector' === $block['blockName'] ) {
+					$assets[] = ! empty( $block['attrs']['theme'] ) ? $block['attrs']['theme'] : 'a-player';
+				}
+			}
+
+			$assets[] = 'main';
+		}
 
 		foreach( $assets as $asset ) {
 
@@ -202,7 +222,7 @@ final class Plugin {
 
 		$songs = $this->get_audio_files();
 
-		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'aplayer';
+		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'a-player';
 
 		ob_start();
 

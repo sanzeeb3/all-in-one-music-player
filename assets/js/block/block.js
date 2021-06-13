@@ -46,7 +46,7 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
                         label= { __( 'Select Theme', 'all-in-one-music-player' ) }
                         value= { theme }
                         options={[
-                                { value: 'aplayer', label: 'APlayer' },
+                                { value: 'a-player', label: 'APlayer' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' },
                                 { value: 'flat-black', label: 'Flat Black' },
                                 { value: 'blue-playlist', label: 'Blue Playlist' }
