@@ -139,7 +139,7 @@ final class Plugin {
 
 			global $post;
 
-		    $blocks = parse_blocks( $post->post_content );
+		    $blocks = isset( $post->post_content ) ? parse_blocks( $post->post_content ) : array();
 
 			$assets = array();
 
