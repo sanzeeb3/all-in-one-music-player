@@ -15,6 +15,11 @@ jQuery( function ($) {
 document.addEventListener(
 	'musicPlayerInitialize',
 	function( e ) {
+
+		if ( jQuery( 'body' ).find( '.circular-spikes' ).length === 0  ) {
+			return;
+		}
+
 		window.setTimeout( doThings, 20 );
 	},
 	false
