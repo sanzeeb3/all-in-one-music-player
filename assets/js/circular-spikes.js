@@ -8,7 +8,6 @@ jQuery( function ($) {
 	}
 
 	doThings();
-
 });
 
 // Trigger things on block rendering.
