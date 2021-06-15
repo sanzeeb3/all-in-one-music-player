@@ -31,10 +31,11 @@ Comes with different music player skin/themes you can choose from.
 
 == Screenshots ==
 
-2. Circular Spikes.
-3. APlayer.
-4. Blue Playlist.
-5. Player Selector.
+1. Circular Spikes.
+2. APlayer.
+3. Blue Playlist.
+4. Player Selector.
+5. Flat Black.
 
 == Frequently Asked Questions ==
 
