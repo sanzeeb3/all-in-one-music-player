@@ -208,10 +208,10 @@ final class Plugin {
 			$audio_files_data[ $key ]['url']    = $url;
 
 			// Cover for all Amplitude.js.
-			$audio_files_data[ $key ]['cover_art_url'] = plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
+			$audio_files_data[ $key ]['cover_art_url'] = ! empty( get_the_post_thumbnail_url( $file->ID ) ) ? get_the_post_thumbnail_url( $file->ID ) : plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
 
 			// Cover for aPlayer
-			$audio_files_data[ $key ]['cover'] = plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
+			$audio_files_data[ $key ]['cover'] = ! empty( get_the_post_thumbnail_url( $file->ID ) ) ? get_the_post_thumbnail_url( $file->ID ) : plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
 		}
 
 		return $audio_files_data;

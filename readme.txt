@@ -26,13 +26,15 @@ Comes with different music player skin/themes you can choose from.
 2) Circular Spikes (from Codepen).
 3) AmplitudeJS (https://github.com/serversideup/amplitudejs/).
 3) Flat Black (from Codepen).
+4) Blue Playlist (from Codepen).
 
 
 == Screenshots ==
 
 2. Circular Spikes.
 3. APlayer.
-4. Flat Black.
+4. Blue Playlist.
+5. Player Selector.
 
 == Frequently Asked Questions ==
 
