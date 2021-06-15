@@ -9,7 +9,7 @@
 
 		    <?php
 
-		    	for ( $i = 0; $i < 11; $i++ ) {
+		    	for ( $i = 0; $i < count( $songs ); $i++ ) {
 		    		?>
 		    			<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo $i;?>">
 				            <span class="song-number-now-playing">

@@ -45,8 +45,9 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
                     <SelectControl
                         label= { __( 'Select Theme', 'all-in-one-music-player' ) }
                         value= { theme }
-                        placeholder= { __( 'Select a Theme', 'all-in-one-music-player' ) }
+                        placeholder= { __( 'Select A Music Player', 'all-in-one-music-player' ) }
                         options={[
+                                { value: '', label: __( '-- Select A Music Player --', 'all-in-one-music-player' ) },
                                 { value: 'a-player', label: 'APlayer' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' },
                                 { value: 'flat-black', label: 'Flat Black' },
@@ -76,7 +77,9 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
 					<SelectControl
 						key="all-in-one-music-player-selector-select-control"
 						value={ theme }
+                        placeholder= { __( 'Select A Music Player', 'all-in-one-music-player' ) }
                         options={[
+                                { value: '', label: __( '-- Select A Music Player --', 'all-in-one-music-player' ) },
                                 { value: 'a-player', label: 'APlayer' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' },
                                 { value: 'flat-black', label: 'Flat Black' },

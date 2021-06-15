@@ -222,14 +222,16 @@ final class Plugin {
 
 		$songs = $this->get_audio_files();
 
-		$theme = isset( $attr['theme'] ) ? $attr['theme'] : 'a-player';
+		$theme = ! empty( $attr['theme'] ) ? $attr['theme'] : '';
+
+		if ( empty( $theme ) ) {
+			return esc_html__( 'No music player selected.', 'all-in-one-music-player' );
+		}
 
 		ob_start();
 
 		include AIO_MUSIC_PLAYER_PLUGIN_DIR . 'templates/' . $theme . '.php';
 
 		return ob_get_clean();
-
-		return $theme;
 	}
 }

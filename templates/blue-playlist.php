@@ -67,25 +67,24 @@
 <!-- Right Side Player -->
 <div id="amplitude-right">
 
-	<?php foreach( $songs as $song ) {
-		?>
-			<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="0">
-				<div class="song-now-playing-icon-container">
-					<div class="play-button-container">
+	 <div id="list">
 
-					</div>
-					<img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/blue-player/now-playing.svg"/>
-				</div>
-				<div class="song-meta-data">
-					<span class="song-title"><?php echo isset( $song['name'] ) ?  $song['name'] : __( 'No Title', 'all-in-one-music-player' ); ?></span>
-					<span class="song-title"><?php echo isset( $song['artist'] ) ?  $song['artist'] : ''; ?></span>
-				</div>
-				<a href="https://switchstancerecordings.bandcamp.com/track/risin-high-feat-raashan-ahmad" class="bandcamp-link" target="_blank">
-				</a>
-				<span class="song-duration">3:30</span>
-			</div>
-		<?php
-	} ?>
+		    <?php
+
+		    	for ( $i = 0; $i < count( $songs ); $i++ ) {
+		    		?>
+		    			<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo $i;?>">
+				            <div class="song-meta-container">
+				              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo $i;?>"></span>
+				              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo $i;?>"></span> <span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo $i;?>"></span></span>
+				            </div>
+		      			</div>
+		      			<hr>
+		    		<?php
+		    	}
+		    ?>
+
+        </div>
 
 </div>
 <!-- End Right Side Player -->
