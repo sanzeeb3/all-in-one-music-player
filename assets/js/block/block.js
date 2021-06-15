@@ -3,7 +3,7 @@ const { registerBlockType } = wp.blocks;
 const el = wp.element.createElement;
 const { ServerSideRender } = wp.components;
 const { InspectorControls } = wp.blockEditor || wp.editor;
-const { SelectControl, PanelBody } = wp.components;
+const { SelectControl, PanelBody, Placeholder } = wp.components;
 
 registerBlockType( 'all-in-one-music-player/music-player-selector', {
     title: __( 'All in One Music Player', 'all-in-one-music-player' ),
@@ -24,7 +24,7 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
     edit( props ) {
         const {
                 attributes: {
-                    theme = "aplayer",
+                    theme = '',
                 },
 
             setAttributes
@@ -45,6 +45,7 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
                     <SelectControl
                         label= { __( 'Select Theme', 'all-in-one-music-player' ) }
                         value= { theme }
+                        placeholder= { __( 'Select a Theme', 'all-in-one-music-player' ) }
                         options={[
                                 { value: 'a-player', label: 'APlayer' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' },
@@ -57,13 +58,35 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
             </InspectorControls>
         ];
 
-        jsx.push(
+		if ( theme ) {
+        	jsx.push(
                 <ServerSideRender
-                    key="all-in-onemusic-player-server-side-renderer"
+                    key="all-in-one-music-player-server-side-renderer"
                     block="all-in-one-music-player/music-player-selector"
                     attributes={ props.attributes }
                 />
             );
+        } else {
+        	jsx.push(
+				<Placeholder
+					key="all-in-one-music-player-selector-wrap"
+					className="all-in-one-music-player-selector-wrap">
+					<img src={ 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png' }/>
+					<h3> { 'All in One Music Player' }</h3>
+					<SelectControl
+						key="all-in-one-music-player-selector-select-control"
+						value={ theme }
+                        options={[
+                                { value: 'a-player', label: 'APlayer' },
+                                { value: 'circular-spikes', label: 'Circular Spikes' },
+                                { value: 'flat-black', label: 'Flat Black' },
+                                { value: 'blue-playlist', label: 'Blue Playlist' }
+                            ]}
+                        onChange={ selectTheme }
+					/>
+				</Placeholder>
+			);
+        }
 
         return jsx;
     },
