@@ -1,3 +1,6 @@
+/*
+global aio_music_player,
+ */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const el = wp.element.createElement;
@@ -72,7 +75,7 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
 				<Placeholder
 					key="all-in-one-music-player-selector-wrap"
 					className="all-in-one-music-player-selector-wrap">
-					<img src={ 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png' }/>
+					<img src={ aio_music_player.icon_url }/>
 					<h3> { 'All in One Music Player' }</h3>
 					<SelectControl
 						key="all-in-one-music-player-selector-select-control"

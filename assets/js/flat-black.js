@@ -1,13 +1,13 @@
 // Trigger things on frontend.
 jQuery( function ($) {
-	FlatBlackInit();
+	flatBlackInit();
 });
 
 // Trigger things on block rendering.
 document.addEventListener(
 	'musicPlayerInitialize',
 	function( e ) {
-		window.setTimeout( FlatBlackInit, 20 );
+		window.setTimeout( flatBlackInit, 20 );
 	},
 	false
 );
@@ -17,7 +17,7 @@ let blockLoadedForFlatBlackInterval = setInterval(function() {
 
     if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
 
-		FlatBlackInit();
+		flatBlackInit();
         blockLoadedForFlatBlack = true;
     }
     if ( blockLoadedForFlatBlack ) {
@@ -25,7 +25,7 @@ let blockLoadedForFlatBlackInterval = setInterval(function() {
     }
 }, 20 );
 
-const FlatBlackInit = function() {
+const flatBlackInit = function() {
 	window.onkeydown = function(e) {
 	    return !(e.keyCode == 32);
 	};

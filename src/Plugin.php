@@ -111,6 +111,12 @@ final class Plugin {
 				AIO_MUSIC_PLAYER_VERSION,
 				true
 			);
+
+			$all_in_one_music_player = array(
+				'icon_url' => plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER )
+			);
+
+			wp_localize_script( 'all-in-one-music-player-block-script', 'aio_music_player', $all_in_one_music_player );
 		}
 
 		/**
@@ -202,10 +208,10 @@ final class Plugin {
 			$audio_files_data[ $key ]['url']    = $url;
 
 			// Cover for all Amplitude.js.
-			$audio_files_data[ $key ]['cover_art_url']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
+			$audio_files_data[ $key ]['cover_art_url'] = plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
 
 			// Cover for aPlayer
-			$audio_files_data[ $key ]['cover']    = 'https://sanjeebaryal.com.np/wp-content/plugins/internet-connection-status/assets/logo.png';
+			$audio_files_data[ $key ]['cover'] = plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
 		}
 
 		return $audio_files_data;
