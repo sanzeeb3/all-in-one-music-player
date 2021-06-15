@@ -1,3 +1,4 @@
+<div class="circular-spikes">
 <div class="player">
 	<canvas></canvas>
 	<div class="song">
@@ -14,4 +15,5 @@
 
 <div class="soundControl"></div>
 	<div class="time">00:00</div>
+</div>
 </div>

@@ -2,9 +2,14 @@
 
 // Trigger things on frontend.
 jQuery( function ($) {
-		doThings();
+
+	if ( $( 'body' ).find( '.circular-spikes' ).length === 0  ) {
+		return;
 	}
-);
+
+	doThings();
+
+});
 
 // Trigger things on block rendering.
 document.addEventListener(
@@ -17,6 +22,10 @@ document.addEventListener(
 
 let blockLoaded = false;
 let blockLoadedInterval = setInterval(function() {
+
+	if ( jQuery( 'body' ).find( '.circular-spikes' ).length === 0  ) {
+		return;
+	}
 
     if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
 
