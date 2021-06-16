@@ -1,5 +1,10 @@
 // Trigger things on frontend.
 jQuery( function ($) {
+
+	if ( jQuery( 'body' ).find( '#flat-black-player-container' ).length === 0  ) {
+		return;
+	}
+
 	flatBlackInit();
 });
 
@@ -7,6 +12,7 @@ jQuery( function ($) {
 document.addEventListener(
 	'musicPlayerInitialize',
 	function( e ) {
+
 		window.setTimeout( flatBlackInit, 20 );
 	},
 	false
@@ -14,6 +20,10 @@ document.addEventListener(
 
 let blockLoadedForFlatBlack = false;
 let blockLoadedForFlatBlackInterval = setInterval(function() {
+
+	if ( jQuery( 'body' ).find( '#flat-black-player-container' ).length === 0  ) {
+		return;
+	}
 
     if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
 
@@ -26,9 +36,6 @@ let blockLoadedForFlatBlackInterval = setInterval(function() {
 }, 20 );
 
 const flatBlackInit = function() {
-	window.onkeydown = function(e) {
-	    return !(e.keyCode == 32);
-	};
 
 	/*
 	  Handles a click on the down button to slide down the playlist.

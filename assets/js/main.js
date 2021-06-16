@@ -38,6 +38,7 @@ let blockLoadedForAPlayerInterval = setInterval(function() {
 
 
 const aplayerInit = function() {
+
 	// APlayer.
 	const aplayer = new APlayer({
 	    container: document.getElementById('aplayer'),

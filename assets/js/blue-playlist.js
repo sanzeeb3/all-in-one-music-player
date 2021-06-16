@@ -1,5 +1,9 @@
 // Trigger things on frontend.
 jQuery( function ($) {
+	if ( jQuery( 'body' ).find( '#blue-playlist-container' ).length === 0  ) {
+		return;
+	}
+
 	bluePlaylistInit();
 });
 
@@ -14,6 +18,10 @@ document.addEventListener(
 
 let blockLoadedForBluePlaylist = false;
 let blockLoadedForBluePlaylistInterval = setInterval(function() {
+
+	if ( jQuery( 'body' ).find( '#blue-playlist-container' ).length === 0  ) {
+		return;
+	}
 
     if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
 

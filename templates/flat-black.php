@@ -1,7 +1,7 @@
 <div id="flat-black-player-container">
 	<div id="list-screen" class="slide-in-top">
 		<div id="list-screen-header" class="hide-playlist">
-			<img id="up-arrow" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/up.svg"/>
+			<img id="up-arrow" src="<?php echo esc_url( plugins_url( 'assets/img/up.svg', AIO_MUSIC_PLAYER ) ); ?> "/>
 			<?php esc_html_e( 'Hide Playlist', 'all-in-one-music-player' ); ?>
 		</div>
 
@@ -13,7 +13,7 @@
 					<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $i ); ?>">
 						<span class="song-number-now-playing">
 							<span class="number"><?php echo absint( $i ) + 1; ?></span>
-							<img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
+							<img class="now-playing" src="<?php echo esc_url( plugins_url( 'assets/img/now-playing.svg', AIO_MUSIC_PLAYER ) ); ?> "/>
 						</span>
 
 						<div class="song-meta-container">
@@ -53,7 +53,7 @@
 
 	<div id="player-screen">
 		<div class="player-header down-header">
-			<img id="down" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/down.svg"/>
+			<img id="down" src="<?php echo esc_url( plugins_url( 'assets/img/down.svg', AIO_MUSIC_PLAYER ) ); ?>"/>
 			<?php esc_html_e( 'Show Playlist', 'all-in-one-music-player' ); ?>
 		</div>
 
