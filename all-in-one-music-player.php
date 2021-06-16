@@ -22,7 +22,7 @@ define( 'AIO_MUSIC_PLAYER', __FILE__ );
 
 // Plugin Folder Path.
 if ( ! defined( 'AIO_MUSIC_PLAYER_PLUGIN_DIR' ) ) {
-    define( 'AIO_MUSIC_PLAYER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+	define( 'AIO_MUSIC_PLAYER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 }
 
 /**
@@ -42,10 +42,10 @@ require_once __DIR__ . '/src/Plugin.php';
  * @return Plugin.
  */
 function aio_music_player() {
-    $instance = MusicPlayer\Plugin::get_instance();
-    $instance->init();
+	$instance = MusicPlayer\Plugin::get_instance();
+	$instance->init();
 
-    return $instance;
+	return $instance;
 }
 
 aio_music_player();

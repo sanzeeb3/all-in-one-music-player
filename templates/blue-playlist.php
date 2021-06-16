@@ -1,4 +1,4 @@
- <!-- Blue Playlist Container -->
+<!-- Blue Playlist Container -->
 <div id="blue-playlist-container">
 
 <!-- Amplitude Player -->
@@ -17,8 +17,7 @@
 			</span>
 			<div id="progress-container">
 				<div class="amplitude-wave-form">
-
-								</div>
+				</div>
 				<input type="range" class="amplitude-song-slider"/>
 				<progress id="song-played-progress" class="amplitude-song-played-progress"></progress>
 				<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>
@@ -67,25 +66,31 @@
 <!-- Right Side Player -->
 <div id="amplitude-right">
 
-	 <div id="list">
+	<div id="list">
 
-		    <?php
+		<?php
 
-		    	for ( $i = 0; $i < count( $songs ); $i++ ) {
-		    		?>
-		    			<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo $i;?>">
-				            <div class="song-meta-container">
-				              <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo $i;?>"></span>
-				              <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo $i;?>"></span> <span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo $i;?>"></span></span>
-				            </div>
-		      			</div>
-		      			<hr>
-		    		<?php
-		    	}
-		    ?>
+		$total = count( $songs );
+		for ( $i = 0; $i < $total; $i++ ) {
+			?>
+				<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $i ); ?>">
+					<div class="song-meta-container">
+						<span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span>
+						<span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span> <span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span></span>
+					</div>
+				</div>
 
-        </div>
+				<hr>
+			<?php
+		}
+		?>
+	</div>
 
 </div>
-<!-- End Right Side Player -->
+<!-- Right Side Player End -->
+
 </div>
+<!-- Amplitude Player End -->
+
+</div>
+<!-- Blue Playlist Container End -->

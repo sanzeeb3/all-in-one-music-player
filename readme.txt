@@ -28,7 +28,6 @@ Comes with different music player skin/themes you can choose from.
 3) Flat Black (from Codepen).
 4) Blue Playlist (from Codepen).
 
-
 == Screenshots ==
 
 1. Circular Spikes.
