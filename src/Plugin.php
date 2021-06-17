@@ -169,11 +169,17 @@ final class Plugin {
 				false
 			);
 
+			/**
+			 * Enqueue Scripts. APLayer is versioned separately.
+			 *
+			 * @see For APlayer: https://github.com/DIYgod/APlayer
+			 *
+			 */
 			wp_enqueue_script(
 				$asset . '-script',
 				plugins_url( 'assets/js/' . $asset . '.js', AIO_MUSIC_PLAYER ),
 				array( 'jquery' ),
-				AIO_MUSIC_PLAYER_VERSION,
+				'a-player' === $asset ? '1.10.1' : AIO_MUSIC_PLAYER_VERSION,
 				true
 			);
 

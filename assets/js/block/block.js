@@ -83,7 +83,7 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
                         placeholder= { __( 'Select A Music Player', 'all-in-one-music-player' ) }
                         options={[
                                 { value: '', label: __( '-- Select A Music Player --', 'all-in-one-music-player' ) },
-                                { value: 'a-player (recommended)', label: 'APlayer' },
+                                { value: 'a-player', label: 'APlayer  (recommended)' },
                                 { value: 'circular-spikes', label: 'Circular Spikes' },
                                 { value: 'flat-black', label: 'Flat Black' },
                                 { value: 'blue-playlist', label: 'Blue Playlist' }
