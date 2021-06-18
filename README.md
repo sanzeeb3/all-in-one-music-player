@@ -2,7 +2,7 @@
 
 Your favourite music player on your WordPress site :boom:
 
-![Don't stop the music](https://i.ibb.co/28rb2Gy/circular-spikes.gif)
+![Don't stop the music](https://github.com/sanzeeb3/all-in-one-music-player/blob/master/the-music.gif)
 
 ## Installation:
 

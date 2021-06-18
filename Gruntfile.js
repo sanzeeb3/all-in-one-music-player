@@ -48,6 +48,7 @@ module.exports = function( grunt ){
 					'!package-lock.json',
 					'!vendor/composer/installers/**',
 					'!webpack.config.js',
+					'!the-music.gif',
 				],
 				dest: '<%= pkg.name %>',
 				expand: true
