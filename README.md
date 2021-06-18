@@ -1,111 +1,25 @@
 ## All in One Music Player
 
-Your favourite music player on your website :boom:
+Your favourite music player on your WordPress site :boom:
 
-## Development guidelines:
+![Don't stop the music](https://i.ibb.co/28rb2Gy/circular-spikes.gif)
 
-1) Clone the repo: 
+## Installation:
 
-```git clone git@github.com:sanzeeb3/all-in-one-music-player.git```
+1) Download the plugin: https://wordpress.org/plugins/all-in-one-music-player/
+2) Upload the plugin in your site.
+3) Go to the posts or pages.
+4) Add a block "All in one music player".
+5) Choose the music player.
+6) That's it.
 
-2) Checkout at all-in-one-music player directory.
+All in One Music Player automatically plays the media found on your media gallery.
 
-3) Run commands:
+## Documentation ##
 
-```npm install```
+https://sanjeebaryal.com.np/all-in-one-music-player
 
-```composer install```
+## Credits ##
 
-```npm run build```
-
-
-block.js is written in ESNext standard and webpack.config.js has a config to compile it to ES5 standard to make it readable. `npm run build` performs this task.
-
-3) Create a new branch.
-
-4) Make changes. If there's any changes in assets/js/block/block.js, to see the changes run ```npm run build```
-
-5) Commit:
-
-git commit -am "Useful messaage" --no-verify
-
-write `--no-verify` if absolutely required. The husky in package.json checks for the coding standard and rules set in phpcs.xml. `--no-verify` bypasses this check.
-
-6) Push the changs:
-
-`git push origin 'the-branch'`
-
-
-
-### Adding a new Music Player:
-
-To add  new music player, all we need is a HTML, JS and CSS files.
-
-Example adding visualization player: https://521dimensions.com/open-source/amplitudejs/docs/examples/visualization-player.html
-
-In the example, there's a HTML, CSS and JS section.
-
-
-Steps:
-
-
-1) Edit in assets/jsblock/block.js, see line number 52. There are other music player options to choose from. So, let us add 'Visualization' player
-
-``{ value: 'visualization', label: 'Visualization' },``
-
-2) Copy the CSS, and create a file in assets/css/visualization.css
-3) Copy the JS, and create a file in assets/js/visualization.js
-4) Copy the PHP, and create a file in templates/visualization.php
-
-
-5) Enqueue the addded CSS and JS.
-
-In th src/Plugin.php, approax. line number 127, where there is:
-
-    $assets = array(
-      'circular-spikes',
-      'a-player',
-      'flat-black-player',
-      'blue-playlist',
-      'main'
-    );
-
-add a new element 'visualization'. So, it would be:
-
-    $assets = array(
-      'circular-spikes',
-      'a-player',
-      'flat-black-player',
-      'blue-playlist',
-      'main',
-      'visualization'
-    );
-
-
-Behind the scenes, it enqueues the `visualization.css` and `visualization.js`
-
-That's it. There should be a new Option in block editor to change the music player.
-
-
-But, the songs in these files are dummy and should be changes.
-
-So, let's go to newly added assets/js/visualization.js and change to 
-
-```
-Amplitude.init({
-  "bindings": {
-    37: 'prev',
-    39: 'next',
-    32: 'play_pause'
-  },
-  "songs": audio_files
-});
-```
-
-
-The `audio_files` is a variable passed to JS with wp_localize_script, see above. which gives all the songs in the WordPress media library to play.
-
-Similarly, changes in templates/visualization.php is required to add dynamic songs. See, blue-playlist.php and adjust accordingly. Should be just a small tweaks.
-
-
-That's all! Happy developing!
+1) APlayer (https://github.com/DIYgod/APlayer).
+2) AmplitudeJS (https://github.com/serversideup/amplitudejs/).
