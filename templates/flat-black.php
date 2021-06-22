@@ -7,20 +7,20 @@
 
 		<div id="list">
 			<?php
-			$total = count( $songs );
-			for ( $i = 0; $i < $total; $i++ ) {
+		
+			foreach($songs as $key => $song ) {
 				?>
-					<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $i ); ?>">
+					<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $key ); ?>">
 						<span class="song-number-now-playing">
-							<span class="number"><?php echo absint( $i ) + 1; ?></span>
+							<span class="number"><?php echo absint( $key ) + 1; ?></span>
 							<img class="now-playing" src="<?php echo esc_url( plugins_url( 'assets/img/now-playing.svg', AIO_MUSIC_PLAYER ) ); ?> "/>
 						</span>
 
 						<div class="song-meta-container">
-							<span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span>
+							<span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo absint( $key ); ?>"></span>
 							<span class="song-artist-album">
-								<span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span>
-								<span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span>
+								<span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo absint( $key ); ?>"></span>
+								<span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo absint( $key ); ?>"></span>
 							</span>
 						</div>
 
