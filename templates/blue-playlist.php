@@ -70,19 +70,20 @@
 
 		<?php
 
-		$total = count( $songs );
-		for ( $i = 0; $i < $total; $i++ ) {
+		foreach ( $songs as $key => $song ) {
+
 			?>
-				<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $i ); ?>">
+				<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $key ); ?>">
 					<div class="song-meta-container">
-						<span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span>
-						<span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span> <span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo absint( $i ); ?>"></span></span>
+						<span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="<?php echo absint( $key ); ?>"></span>
+						<span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="<?php echo absint( $key ); ?>"></span> <span data-amplitude-song-info="album" data-amplitude-song-index="<?php echo absint( $key ); ?>"></span></span>
 					</div>
 				</div>
 
 				<hr>
 			<?php
 		}
+
 		?>
 	</div>
 
