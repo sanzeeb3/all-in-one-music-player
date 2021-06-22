@@ -72,11 +72,6 @@ const flatBlackInit = function() {
 	document.querySelector('img[data-amplitude-song-info="cover_art_url"]').style.height = document.querySelector('img[data-amplitude-song-info="cover_art_url"]').offsetWidth + 'px';
 
 	Amplitude.init({
-	  "bindings": {
-	    37: 'prev',
-	    39: 'next',
-	    32: 'play_pause'
-	  },
 	  "songs": audio_files
 	});
 }

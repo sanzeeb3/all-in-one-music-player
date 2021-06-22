@@ -7,8 +7,8 @@
 
 		<div id="list">
 			<?php
-		
-			foreach($songs as $key => $song ) {
+
+			foreach ( $songs as $key => $song ) {
 				?>
 					<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="<?php echo absint( $key ); ?>">
 						<span class="song-number-now-playing">
@@ -29,7 +29,7 @@
 						<span>
 					</div>
 				<?php
-			}//end for
+			}//end foreach
 			?>
 		</div>
 
