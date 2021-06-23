@@ -1,0 +1,21 @@
+{
+  "name": "sanzeeb3/all-in-one-music-player",
+  "description": "Easily embed your favourite music player in your website..",
+  "homepage": "https://github.com/sanzeeb3/all-in-one-music-player",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0",
+   "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+   "scripts": {
+    "phpcs": [
+      "phpcs -s -p"
+    ],
+    "phpcs-pre-commit": [
+      "phpcs -s -p -n"
+    ],
+    "phpcbf": [
+      "phpcbf -p"
+    ]
+  }
+}
