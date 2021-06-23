@@ -173,7 +173,6 @@ final class Plugin {
 			 * Enqueue Scripts. APLayer is versioned separately.
 			 *
 			 * @see For APlayer: https://github.com/DIYgod/APlayer
-			 *
 			 */
 			wp_enqueue_script(
 				$asset . '-script',
@@ -184,7 +183,8 @@ final class Plugin {
 			);
 
 			wp_localize_script( $asset . '-script', 'audio_files', $this->get_audio_files() );
-		};
+		};//end foreach
+
 	}
 
 	/**
@@ -219,6 +219,12 @@ final class Plugin {
 
 			// Cover for aPlayer.
 			$audio_files_data[ $key ]['cover'] = ! empty( get_the_post_thumbnail_url( $file->ID ) ) ? get_the_post_thumbnail_url( $file->ID ) : plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
+
+			require_once( ABSPATH . 'wp-admin/includes/media.php' ); // because /wp-admin/includes/media.php, which is not loaded on the front end.
+
+			$metadata = \wp_read_audio_metadata( $url );
+
+			$audio_files_data[ $key ]['length'] = ! empty( $metadata['length'] ) ? $metadata['length'] : '3:30';
 		}
 
 		return $audio_files_data;

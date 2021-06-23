@@ -5,7 +5,8 @@
   "type": "wordpress-plugin",
   "license": "GPL-2.0",
    "require-dev": {
-        "squizlabs/php_codesniffer": "3.*"
+        "squizlabs/php_codesniffer": "3.*",
+        "wp-coding-standards/wpcs": "^2.3"
     },
    "scripts": {
     "phpcs": [

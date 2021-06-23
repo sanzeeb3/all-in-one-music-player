@@ -25,7 +25,7 @@
 						</div>
 
 						<span class="song-duration">
-							3:30
+							<?php esc_html_e( $song['length'] ); ?>
 						<span>
 					</div>
 				<?php
