@@ -96,7 +96,7 @@ final class Plugin {
 	}
 
 	/**
-	 * Load assets on block editor area.
+	 * Load assets on block editor area and frontend.
 	 *
 	 * @return void.
 	 */
@@ -125,7 +125,7 @@ final class Plugin {
 		 *
 		 * @see https://github.com/serversideup/amplitudejs/
 		 */
-		wp_enqueue_script(
+		wp_register_script(
 			'amplitude-player-script',
 			plugins_url( 'assets/js/amplitude.js', AIO_MUSIC_PLAYER ),
 			array( 'jquery' ),
@@ -152,6 +152,7 @@ final class Plugin {
 
 			foreach ( $blocks as $block ) {
 				if ( 'all-in-one-music-player/music-player-selector' === $block['blockName'] ) {
+
 					$assets[] = ! empty( $block['attrs']['theme'] ) ? $block['attrs']['theme'] : 'a-player';
 				}
 			}
@@ -171,13 +172,14 @@ final class Plugin {
 
 			/**
 			 * Enqueue Scripts. APLayer is versioned separately.
+			 * Amplitude.JS is loaded conditionally.
 			 *
-			 * @see For APlayer: https://github.com/DIYgod/APlayer
+			 * @uses APlayer: https://github.com/DIYgod/APlayer
 			 */
 			wp_enqueue_script(
 				$asset . '-script',
 				plugins_url( 'assets/js/' . $asset . '.js', AIO_MUSIC_PLAYER ),
-				array( 'jquery' ),
+				in_array( $asset, array( 'blue-playlist', 'flat-black' ), true ) ? array( 'jquery', 'amplitude-player-script' ) : array( 'jquery' ),
 				'a-player' === $asset ? '1.10.1' : AIO_MUSIC_PLAYER_VERSION,
 				true
 			);
@@ -220,12 +222,13 @@ final class Plugin {
 			// Cover for aPlayer.
 			$audio_files_data[ $key ]['cover'] = ! empty( get_the_post_thumbnail_url( $file->ID ) ) ? get_the_post_thumbnail_url( $file->ID ) : plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
 
-			require_once( ABSPATH . 'wp-admin/includes/media.php' ); // because /wp-admin/includes/media.php, which is not loaded on the front end.
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+			// because /wp-admin/includes/media.php, which is not loaded on the front end.
 
 			$metadata = \wp_read_audio_metadata( $url );
 
 			$audio_files_data[ $key ]['length'] = ! empty( $metadata['length'] ) ? $metadata['length'] : '3:30';
-		}
+		}//end foreach
 
 		return $audio_files_data;
 	}
