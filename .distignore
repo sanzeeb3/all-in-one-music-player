@@ -45,3 +45,5 @@ LICENSE.md
 vendor
 dist
 the-music.gif
+.babelrc
+webpack.config.js
