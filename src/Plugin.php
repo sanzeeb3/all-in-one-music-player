@@ -45,11 +45,14 @@ final class Plugin {
 		// Register block.
 		add_action( 'init', array( $this, 'register_block' ) );
 
+		// Shortocode.
+		add_shortcode( 'all_in_one_music_player', array( $this, 'music_player_content' ) );
+
 		// Enqueue assets in block editor.
-		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'load_assets_in_block' ) );
 
 		// Enqueue assets in the frontend.
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets_on_frontend' ) );
 	}
 
 	/**
@@ -96,36 +99,32 @@ final class Plugin {
 	}
 
 	/**
-	 * Load assets on block editor area and frontend.
+	 * Load assets on block editor area.
 	 *
 	 * @return void.
 	 */
-	public function load_assets() { //phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+	public function load_assets_in_block() {
 
-		if ( is_admin() ) {
-			// block.min.js isn't required on the frontend. The check is only required for 'wp_enqueue_scripts'. 'enqueue_block_editor_assets' automatically loads only on block editor.
+		wp_enqueue_script(
+			'all-in-one-music-player-block-script',
+			plugins_url( 'assets/js/block/block.min.js', AIO_MUSIC_PLAYER ),
+			array( 'wp-blocks', 'wp-editor' ),
+			AIO_MUSIC_PLAYER_VERSION,
+			true
+		);
 
-			wp_enqueue_script(
-				'all-in-one-music-player-block-script',
-				plugins_url( 'assets/js/block/block.min.js', AIO_MUSIC_PLAYER ),
-				array( 'wp-blocks', 'wp-editor' ),
-				AIO_MUSIC_PLAYER_VERSION,
-				true
-			);
+		$all_in_one_music_player = array(
+			'icon_url' => plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER ),
+		);
 
-			$all_in_one_music_player = array(
-				'icon_url' => plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER ),
-			);
-
-			wp_localize_script( 'all-in-one-music-player-block-script', 'aio_music_player', $all_in_one_music_player );
-		}
+		wp_localize_script( 'all-in-one-music-player-block-script', 'aio_music_player', $all_in_one_music_player );
 
 		/**
 		 * Amplitude.js loads separately because of version and needs update and regular monitor.
 		 *
 		 * @see https://github.com/serversideup/amplitudejs/
 		 */
-		wp_register_script(
+		wp_enqueue_script(
 			'amplitude-player-script',
 			plugins_url( 'assets/js/amplitude.js', AIO_MUSIC_PLAYER ),
 			array( 'jquery' ),
@@ -141,24 +140,84 @@ final class Plugin {
 			'main',
 		);
 
-		// Load assets conditionally on frontend.
-		if ( ! is_admin() ) {
+		$this->enqueue_all_in_one_music_player_assets( $assets );
+	}
 
-			global $post;
+	/**
+	 * Load assets on frontend.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @return void.
+	 */
+	public function load_assets_on_frontend() { //phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+		global $post;
 
-			$blocks = isset( $post->post_content ) ? parse_blocks( $post->post_content ) : array();
+		$blocks = isset( $post->post_content ) ? parse_blocks( $post->post_content ) : array();
 
-			$assets = array();
+		$assets = array();
 
-			foreach ( $blocks as $block ) {
-				if ( 'all-in-one-music-player/music-player-selector' === $block['blockName'] ) {
+		foreach ( $blocks as $block ) {
+			if ( 'all-in-one-music-player/music-player-selector' === $block['blockName'] ) {
 
-					$assets[] = ! empty( $block['attrs']['theme'] ) ? $block['attrs']['theme'] : 'a-player';
-				}
+				$block_exists = true;
+				$assets[]     = ! empty( $block['attrs']['theme'] ) ? $block['attrs']['theme'] : 'a-player';
 			}
+		}
 
+		$has_shortcode = is_singular() && is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'all_in_one_music_player' );
+
+		// If it's a shorcode, load all.
+		if ( $has_shortcode ) {
+
+			$load_amplitude = true;
+
+			$assets = array(
+				'circular-spikes',
+				'a-player',
+				'flat-black',
+				'blue-playlist',
+				'main',
+			);
+		}
+
+		// If it's a block, load main but conditionally load amplitude.
+		if ( isset( $block_exists ) ) {
 			$assets[] = 'main';
 		}
+
+		// load amplitude if the theme is flat-black or blue-playlist.
+		if ( in_array( 'flat-black', $assets, true ) || in_array( 'blue-playlist', $assets, true ) ) {
+			$load_amplitude = true;
+		}
+
+		if ( isset( $load_amplitude ) ) {
+
+			/**
+			 * Amplitude.js loads separately because of version and needs update and regular monitor.
+			 *
+			 * @see https://github.com/serversideup/amplitudejs/
+			 */
+			wp_enqueue_script(
+				'amplitude-player-script',
+				plugins_url( 'assets/js/amplitude.js', AIO_MUSIC_PLAYER ),
+				array( 'jquery' ),
+				'5.3.1',
+				true
+			);
+		}
+
+		$this->enqueue_all_in_one_music_player_assets( $assets );
+	}
+
+	/**
+	 * Actually enqueue assets.
+	 *
+	 * @param  array $assets Src handle to enqueue.
+	 *
+	 *  @since 1.1.0
+	 */
+	public function enqueue_all_in_one_music_player_assets( $assets = array() ) {
 
 		foreach ( $assets as $asset ) {
 
@@ -172,14 +231,13 @@ final class Plugin {
 
 			/**
 			 * Enqueue Scripts. APLayer is versioned separately.
-			 * Amplitude.JS is loaded conditionally.
 			 *
-			 * @uses APlayer: https://github.com/DIYgod/APlayer
+			 * @see For APlayer: https://github.com/DIYgod/APlayer
 			 */
 			wp_enqueue_script(
 				$asset . '-script',
 				plugins_url( 'assets/js/' . $asset . '.js', AIO_MUSIC_PLAYER ),
-				in_array( $asset, array( 'blue-playlist', 'flat-black' ), true ) ? array( 'jquery', 'amplitude-player-script' ) : array( 'jquery' ),
+				array( 'jquery' ),
 				'a-player' === $asset ? '1.10.1' : AIO_MUSIC_PLAYER_VERSION,
 				true
 			);
@@ -221,14 +279,7 @@ final class Plugin {
 
 			// Cover for aPlayer.
 			$audio_files_data[ $key ]['cover'] = ! empty( get_the_post_thumbnail_url( $file->ID ) ) ? get_the_post_thumbnail_url( $file->ID ) : plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
-
-			require_once ABSPATH . 'wp-admin/includes/media.php';
-			// because /wp-admin/includes/media.php, which is not loaded on the front end.
-
-			$metadata = \wp_read_audio_metadata( $url );
-
-			$audio_files_data[ $key ]['length'] = ! empty( $metadata['length'] ) ? $metadata['length'] : '3:30';
-		}//end foreach
+		}
 
 		return $audio_files_data;
 	}
@@ -254,7 +305,10 @@ final class Plugin {
 
 		ob_start();
 
-		include AIO_MUSIC_PLAYER_PLUGIN_DIR . 'templates/' . $theme . '.php';
+		if ( file_exists( AIO_MUSIC_PLAYER_PLUGIN_DIR . 'templates/' . $theme . '.php' ) ) {
+
+			include AIO_MUSIC_PLAYER_PLUGIN_DIR . 'templates/' . $theme . '.php';
+		}
 
 		return ob_get_clean();
 	}
