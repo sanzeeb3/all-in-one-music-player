@@ -4,7 +4,7 @@ Tags: music-player, APlayer, mp3, audio
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,5 +49,15 @@ No Questions Yet.
 
 == Changelog ==
 
-= 1.0.0 - xx/xx/2020 =
-* Initial Release
+= 1.1.0 - 07/08/2021 = 
+* Add - Shortcodes support
+
+= 1.0.2 – 07/01/2021 =
+* Fix – Ignore unnecessary files.
+* Fix – Conditionally load amplitude.js in frontend.
+
+= 1.0.1 – 06/22/2021 =
+* Fix – Space bar on block editor playing music
+
+= 1.0.0 – 06/18/2021 =
+Initial Release
