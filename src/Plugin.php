@@ -279,7 +279,14 @@ final class Plugin {
 
 			// Cover for aPlayer.
 			$audio_files_data[ $key ]['cover'] = ! empty( get_the_post_thumbnail_url( $file->ID ) ) ? get_the_post_thumbnail_url( $file->ID ) : plugins_url( 'assets/img/logo.png', AIO_MUSIC_PLAYER );
-		}
+
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+			// because /wp-admin/includes/media.php, which is not loaded on the front end.
+
+			$metadata = \wp_read_audio_metadata( $url );
+
+			$audio_files_data[ $key ]['length'] = ! empty( $metadata['length'] ) ? $metadata['length'] : '3:30';
+		}//end foreach
 
 		return $audio_files_data;
 	}

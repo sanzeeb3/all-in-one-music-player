@@ -4,7 +4,7 @@ Tags: music-player, APlayer, mp3, audio
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ Comes with different music player skin/themes you can choose from.
 No Questions Yet.
 
 == Changelog ==
+
+= 1.1.1 - 07/09/2021 =
+* Fix - PHP error about undefined length index on flatblack player.
 
 = 1.1.0 - 07/08/2021 = 
 * Add - Shortcodes support
