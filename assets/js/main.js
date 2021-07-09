@@ -1,4 +1,5 @@
 /* global audio_files */
+/* jshint esversion: 6 */
 
 // Trigger things on frontend.
 jQuery( function ($) {
@@ -20,13 +21,14 @@ document.addEventListener(
 );
 
 let blockLoadedForAPlayer = false;
+
 let blockLoadedForAPlayerInterval = setInterval(function() {
 
 	if ( jQuery( 'body' ).find( '#aplayer' ).length === 0  ) {
 		return;
 	}
 
-    if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
+    if ( document.getElementById( 'post-title-1' ) ) {/*post-title-1 is ID of Post Title Textarea*/
 
 		aplayerInit();
         blockLoadedForAPlayer = true;
@@ -44,4 +46,4 @@ const aplayerInit = function() {
 	    container: document.getElementById('aplayer'),
 	    audio: audio_files
 	});
-}
+};
