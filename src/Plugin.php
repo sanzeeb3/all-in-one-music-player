@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-final class Plugin{
+final class Plugin {
 
 	/**
 	 * Instance of this class.
