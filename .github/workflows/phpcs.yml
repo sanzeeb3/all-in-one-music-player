@@ -10,15 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - id: file_changes
-      uses: trilom/file-changes-action@v1.2.3
-      with:
-        output: ' '
-
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Run CS
       run: vendor/bin/phpcs --standard=phpcs.xml .
-      with:
-        extra_args: --files ${{ steps.file_changes.outputs.files}}
