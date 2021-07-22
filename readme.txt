@@ -2,9 +2,9 @@
 Contributors: sanzeeb3
 Tags: music-player, APlayer, mp3, audio
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ Comes with different music player skin/themes you can choose from.
 No Questions Yet.
 
 == Changelog ==
+
+= 1.2.0 - 07/22/2021 =
+* Fix - Compatibility with WP 5.8
 
 = 1.1.1 - 07/09/2021 =
 * Fix - PHP error about undefined length index on flatblack player.

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: All in One Music Player
  * Description: Easily embed your favourite music player in your website.
- * Version: 1.1.1
+ * Version: 1.2.0
  * Author: Sanjeev Aryal
  * Author URI: https://www.sanjeebaryal.com.np
  * Text Domain: all-in-one-music-player
@@ -30,7 +30,7 @@ if ( ! defined( 'AIO_MUSIC_PLAYER_PLUGIN_DIR' ) ) {
  *
  * @var string
  */
-const AIO_MUSIC_PLAYER_VERSION = '1.1.1';
+const AIO_MUSIC_PLAYER_VERSION = '1.2.0';
 
 require_once __DIR__ . '/src/Plugin.php';
 
