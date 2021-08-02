@@ -37,5 +37,6 @@
 	<rule ref="Squiz.Commenting">
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+		<exclude name="Squiz.Commenting.LongConditionClosingComment.SpacingBefore" />
 	</rule>
 </ruleset>

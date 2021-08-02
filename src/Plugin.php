@@ -108,7 +108,7 @@ final class Plugin {
 		wp_enqueue_script(
 			'all-in-one-music-player-block-script',
 			plugins_url( 'assets/js/block/block.min.js', AIO_MUSIC_PLAYER ),
-			[ 'wp-blocks', 'wp-i18n', 'wp-element' ],
+			array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
 			AIO_MUSIC_PLAYER_VERSION,
 			true
 		);
