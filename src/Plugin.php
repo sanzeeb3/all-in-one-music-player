@@ -45,7 +45,7 @@ final class Plugin {
 		// Register block.
 		add_action( 'init', array( $this, 'register_block' ) );
 
-		// Shortocode.
+		// Shortcode.
 		add_shortcode( 'all_in_one_music_player', array( $this, 'music_player_content' ) );
 
 		// Enqueue assets in block editor.
