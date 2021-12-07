@@ -288,7 +288,7 @@ final class Plugin {
 			$audio_files_data[ $key ]['length'] = ! empty( $metadata['length'] ) ? $metadata['length'] : '3:30';
 		}//end foreach
 
-		return $audio_files_data;
+		return apply_filters( 'all_in_one_music_player_audio_files_data',  $audio_files_data );
 	}
 
 	/**
