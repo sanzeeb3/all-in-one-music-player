@@ -27,11 +27,15 @@ While I recommend setting up via block, shortcodes are also available:
 
 Comes with different music player skin/themes you can choose from.
 
+Follow the [documentation](https://sanjeebaryal.com.np/how-to-add-a-music-player-to-your-wordpress-site/) for more details on setup.
+
+Contribute in the [GitHub Repository](https://github.com/sanzeeb3/all-in-one-music-player).
+
 ## Music Player Themes and Credits:
 
-1) APlayer (https://github.com/DIYgod/APlayer).
+1) [APlayer](https://sanjeebaryal.com.np/using-aplayer-in-wordpress-site/) ([https://github.com/DIYgod/APlayer](https://github.com/DIYgod/APlayer)).
 2) Circular Spikes (From codepen).
-3) AmplitudeJS (https://github.com/serversideup/amplitudejs/).
+3) AmplitudeJS ([https://github.com/serversideup/amplitudejs/](https://github.com/serversideup/amplitudejs/)).
 4) Flat Black.
 5) Blue Playlist.
 
