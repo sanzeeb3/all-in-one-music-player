@@ -23,3 +23,30 @@ https://sanjeebaryal.com.np/all-in-one-music-player
 
 1) APlayer (https://github.com/DIYgod/APlayer).
 2) AmplitudeJS (https://github.com/serversideup/amplitudejs/).
+
+
+## Modifying the audio-files:
+
+```
+
+add_filter(
+	'all_in_one_music_player_audio_files_data',
+	function( $audio ) {
+
+		$audio = array(
+			array(
+				'artist'        => 'The Shadows',
+				'song'          => 'Prakriti',
+				'name'          => 'Prakriti',
+				'url'           => 'https://sanjeebaryal.com.np/wp-content/uploads/2021/10/bensound-happyrock.mp3',
+				'cover_art_url' => 'https://sanjeebaryal.com.np/wp-content/uploads/2021/06/All-in-one-music-player.png',
+				'cover'         => 'https://sanjeebaryal.com.np/wp-content/uploads/2021/06/All-in-one-music-player.png',
+				'length'        => '4:30',
+			),
+		);
+
+		return $audio;
+	}
+);
+
+```
