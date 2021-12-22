@@ -4,7 +4,7 @@ Tags: music-player, APlayer, mp3, audio
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,6 +52,9 @@ Contribute in the [GitHub Repository](https://github.com/sanzeeb3/all-in-one-mus
 No Questions Yet.
 
 == Changelog ==
+
+= 1.2.1 = 12/22/2021 =
+* Add - Filter to modify audio-files
 
 = 1.2.0 - 07/22/2021 =
 * Fix - Compatibility with WP 5.8
