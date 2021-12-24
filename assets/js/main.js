@@ -41,9 +41,12 @@ let blockLoadedForAPlayerInterval = setInterval(function() {
 
 const aplayerInit = function() {
 
-	// APlayer.
-	const aplayer = new APlayer({
-	    container: document.getElementById('aplayer'),
-	    audio: audio_files
-	});
+	if ( typeof APlayer != 'undefined' ) {
+
+		// APlayer.
+		const aplayer = new APlayer({
+		    container: document.getElementById('aplayer'),
+		    audio: audio_files
+		});
+	}
 };
