@@ -77,6 +77,9 @@ registerBlockType( 'all-in-one-music-player/music-player-selector', {
 					className="all-in-one-music-player-selector-wrap">
 					<img src={ aio_music_player.icon_url }/>
 					<h3> { 'All in One Music Player' }</h3>
+					<i>{ __( 'For best experience, please view the music player in the frontend.', 'all-in-one-music-player' ) } </i>
+					<br/>
+					<br/>
 					<SelectControl
 						key="all-in-one-music-player-selector-select-control"
 						value={ theme }
