@@ -4,7 +4,7 @@ Tags: music-player, APlayer, mp3, audio
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,7 +33,7 @@ Contribute in the [GitHub Repository](https://github.com/sanzeeb3/all-in-one-mus
 
 ## Music Player Themes and Credits:
 
-1) [APlayer](https://sanjeebaryal.com.np/using-aplayer-in-wordpress-site/) ([https://github.com/DIYgod/APlayer](https://github.com/DIYgod/APlayer)).
+1) APlayer ([https://github.com/DIYgod/APlayer](https://github.com/DIYgod/APlayer)).
 2) Circular Spikes (From codepen).
 3) AmplitudeJS ([https://github.com/serversideup/amplitudejs/](https://github.com/serversideup/amplitudejs/)).
 4) Flat Black.
@@ -53,7 +53,12 @@ No Questions Yet.
 
 == Changelog ==
 
-= 1.2.1 = 12/22/2021 =
+= 1.3.0 - 12/27/2021 =
+* Fix - APlayer error on console.
+* Fix - Blue Playlist errors during hover.
+* Miscellaneous fixes
+
+= 1.2.1 - 12/22/2021 =
 * Add - Filter to modify audio-files
 
 = 1.2.0 - 07/22/2021 =
