@@ -1,6 +1,10 @@
 /* global audio_files */
 /* jshint esversion: 6 */
 
+/**
+ * @todo: A better solution for this. Issue: https://github.com/WordPress/gutenberg/issues/8379
+ */
+
 // Trigger things on frontend.
 jQuery( function ($) {
 	aplayerInit();
