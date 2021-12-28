@@ -10,7 +10,7 @@ const { SelectControl, PanelBody, Placeholder } = wp.components;
 
 registerBlockType( 'all-in-one-music-player/music-player-selector', {
     title: __( 'All in One Music Player', 'all-in-one-music-player' ),
-    description: __( 'The player will automatically fetch all of your media files from the media library. For best results, plesae view and play the music player in the frontend of your site.', 'all-in-one-music-player' ),
+    description: __( 'The player will automatically fetch all of your media files from the media library. For best results, please view and play the music player in the frontend of your site.', 'all-in-one-music-player' ),
     icon: 'format-audio',
     category: 'widgets',
     keywords: [ 'player', 'music', 'mp3', 'audio' ],
