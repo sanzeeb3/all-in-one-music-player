@@ -8,6 +8,18 @@
 // Trigger things on frontend.
 jQuery( function ($) {
 
+	const aplayerInit = function() {
+
+		if ( typeof APlayer != 'undefined' ) {
+
+			// APlayer.
+			const aplayer = new APlayer({
+			    container: document.getElementById('aplayer'),
+			    audio: audio_files
+			});
+		}
+	};
+
 	if ( jQuery( 'body' ).find( '#aplayer' ).length === 0  ) {
 		return;
 	}
@@ -15,27 +27,3 @@ jQuery( function ($) {
 	aplayerInit();
 });
 
-document.addEventListener(
-	'musicPlayerInitialize',
-	function( e ) {
-
-		if ( jQuery( 'body' ).find( '#aplayer' ).length === 0  ) {
-			return;
-		}
-
-		window.setTimeout( aplayerInit, 20 );
-	},
-	false
-);
-
-const aplayerInit = function() {
-
-	if ( typeof APlayer != 'undefined' ) {
-
-		// APlayer.
-		const aplayer = new APlayer({
-		    container: document.getElementById('aplayer'),
-		    audio: audio_files
-		});
-	}
-};
