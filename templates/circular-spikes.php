@@ -2,7 +2,7 @@
 <div class="player">
 	<canvas></canvas>
 	<div class="song">
-		<div class="artist"><?php esc_html_e( 'Searching media files...', 'music-player' ); ?></div>
+		<div class="artist"><?php esc_html_e( 'Circular Spikes music player loading...', 'music-player' ); ?></div>
 	<div class="name"><?php esc_html_e( 'Please upload your audio files in the media library.', 'music-player' ); ?></div>
 </div>
 

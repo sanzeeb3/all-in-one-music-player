@@ -18,23 +18,6 @@ document.addEventListener(
 	false
 );
 
-let blockLoadedForFlatBlack = false;
-let blockLoadedForFlatBlackInterval = setInterval(function() {
-
-	if ( jQuery( 'body' ).find( '#flat-black-player-container' ).length === 0  ) {
-		return;
-	}
-
-    if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
-
-		flatBlackInit();
-        blockLoadedForFlatBlack = true;
-    }
-    if ( blockLoadedForFlatBlack ) {
-        clearInterval( blockLoadedForAPlayerInterval );
-    }
-}, 20 );
-
 const flatBlackInit = function() {
 
 	/*

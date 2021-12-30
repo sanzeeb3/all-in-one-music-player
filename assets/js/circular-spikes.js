@@ -24,23 +24,6 @@ document.addEventListener(
 	false
 );
 
-let blockLoaded = false;
-let blockLoadedInterval = setInterval(function() {
-
-	if ( jQuery( 'body' ).find( '.circular-spikes' ).length === 0  ) {
-		return;
-	}
-
-    if (document.getElementById('post-title-1')) {/*post-title-1 is ID of Post Title Textarea*/
-
-		doThings();
-        blockLoaded = true;
-    }
-    if ( blockLoaded ) {
-        clearInterval( blockLoadedInterval );
-    }
-}, 20 );
-
 const doThings = function() {
 	var Framer = {
 
