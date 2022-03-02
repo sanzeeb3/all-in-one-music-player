@@ -5,7 +5,7 @@ canvas {
 
 .player {
     display: block;
-    position: absolute;
+    position: relative;
 }
 
 .player .playarea {
