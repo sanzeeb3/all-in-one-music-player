@@ -4,7 +4,7 @@ Tags: music-player, APlayer, mp3, audio
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,6 +52,9 @@ Contribute in the [GitHub Repository](https://github.com/sanzeeb3/all-in-one-mus
 No Questions Yet.
 
 == Changelog ==
+
+= 1.3.1 - 3/11/2022 =
+* Fix - Overlapping Circular Spikes theme.
 
 = 1.3.0 - 12/27/2021 =
 * Fix - APlayer error on console.
